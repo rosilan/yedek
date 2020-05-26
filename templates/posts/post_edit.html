@@ -1,0 +1,21 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block styles %}
+	<link rel="stylesheet" type="text/css" href="{% static '/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+	<nav class="blend">
+		<ul>
+			<li><a href="http://127.0.0.1:8000">Home</a></li>
+			<li><a href="http://127.0.0.1:8000/admin/">Admin</a></li>
+			<li><a href="{% url 'post_list' %}">Posts</a></li>
+		</ul>
+	</nav>
+	<h1>Edit the Post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
